@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use Michelf\MarkdownExtra;
-use Michelf\SmartyPants;
+use \Michelf\SmartyPants;
 
 class Markdowner
 {
