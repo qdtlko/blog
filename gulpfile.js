@@ -19,7 +19,6 @@ var elixir = require('laravel-elixir');
 // });
 
 
-
 // /**
 //  * 拷贝任何需要的文件
 //  *
@@ -57,13 +56,12 @@ var elixir = require('laravel-elixir');
 // });
 
 
-
 /**
  * 拷贝所有需要的文件
  *
  * Do a 'gulp copyfiles' after bower updates
  */
-gulp.task("copyfiles", function() {
+gulp.task("copyfiles", function () {
 
     // 拷贝 jQuery, Bootstrap, 和 FontAwesome
     gulp.src("vendor/bower_dl/jquery/dist/jquery.js")
@@ -98,8 +96,6 @@ gulp.task("copyfiles", function() {
         .pipe(gulp.dest('resources/assets/js/'));
 
 
-
-
     // Copy selectize
     gulp.src("vendor/bower_dl/selectize/dist/css/**")
         .pipe(gulp.dest("public/assets/selectize/css"));
@@ -119,12 +115,17 @@ gulp.task("copyfiles", function() {
 
     gulp.src("vendor/bower_dl/pickadate/lib/compressed/picker.time.js")
         .pipe(gulp.dest("public/assets/pickadate/"));
+
+
+    // Copy clean-blog less files
+    gulp.src("vendor/bower_dl/clean-blog/less/**")
+        .pipe(gulp.dest("resources/assets/less/clean-blog"));
 });
 
 /**
  * Default gulp is to run this elixir stuff
  */
-elixir(function(mix) {
+elixir(function (mix) {
 
     // 合并脚本文件
     mix.scripts([
@@ -137,6 +138,19 @@ elixir(function(mix) {
         'resources/assets'
     );
 
+
+    // Combine blog scripts
+    mix.scripts([
+            'js/jquery.js',
+            'js/bootstrap.js',
+            'js/blog.js'
+        ],
+        'public/assets/js/blog.js',
+        'resources//assets'
+    );
+
     // 编译 Less
     mix.less('admin.less', 'public/assets/css/admin.css');
+
+    mix.less('blog.less', 'public/assets/css/blog.css');
 });
