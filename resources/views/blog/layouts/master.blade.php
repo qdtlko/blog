@@ -8,6 +8,8 @@
     <meta name="author" content="{{ config('blog.author') }}">
 
     <title>{{ $title or config('blog.title') }}</title>
+    <link rel="alternate" type="application/rss+xml" href="{{ url('rss') }}"
+          title="RSS Feed {{ config('blog.title') }}">
 
     {{-- Styles --}}
     <link href="/assets/css/blog.css" rel="stylesheet">
@@ -17,6 +19,7 @@
   <!--[if lt IE 9]>
     <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
     <![endif]-->
 </head>
 <body>
@@ -29,6 +32,27 @@
 
 {{-- Scripts --}}
 <script src="/assets/js/blog.js"></script>
+
+<script>window._bd_share_config = {
+        "common": {
+            "bdSnsKey": {},
+            "bdText": "",
+            "bdMini": "2",
+            "bdMiniList": false,
+            "bdPic": "",
+            "bdStyle": "2",
+            "bdSize": "16"
+        },
+        "slide": {"type": "slide", "bdImg": "3", "bdPos": "right", "bdTop": "43.5"},
+        "image": {"viewList": ["qzone", "tsina", "tqq", "renren", "weixin"], "viewText": "分享到：", "viewSize": "24"},
+        "selectShare": {"bdContainerClass": null, "bdSelectMiniList": ["qzone", "tsina", "tqq", "renren", "weixin"]}
+    };
+    with (document)0[
+            (getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='
+                    + ~(-new Date() / 36e5)
+            ];
+</script>
+
 @yield('scripts')
 
 </body>

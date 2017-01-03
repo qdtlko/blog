@@ -22,4 +22,6 @@ return [
         'storage' => 'local',
         'webpath' => '/uploads/',
     ],
+    'contact_email'=>env('MAIL_FROM'),
+    'rss_size' => 25,
 ];
